@@ -32,3 +32,9 @@ def search_item_ctrl_f(text: str, nth_result: int = 1) -> str:
     webdriver.execute_script("arguments[0].scrollIntoView(true);", elem)
     result += f"Focused on element {nth_result} of {len(elements)}"
     return result
+
+@tool
+def go_back() -> None:
+    """Goes back to the previous page"""
+    webdriver.back()
+    
