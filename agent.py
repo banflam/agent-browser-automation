@@ -72,3 +72,17 @@ def save_screenshot(memory_step: ActionStep, agent: CodeAgent) -> None:
     memory_step.observations = (
         url_info if memory_step.observations is None else memory_step.observations + "\n" + url_info
     )
+
+model_id = "Qwen/Qwen2-VL-72B-Instruct"
+model = InferenceClientModel(model_id=model_id)
+
+agent = CodeAgent(
+    tools = [go_back, close_popups, search_item_ctrl_f],
+    model = model,
+    additional_authorized_imports= ["helium"],
+    step_callbacks = [save_screenshot],
+    max_steps = 20,
+    verbosity_level = 2,
+)
+
+agent.python_executor("from helium import *", agent.state)
