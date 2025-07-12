@@ -38,3 +38,10 @@ def go_back() -> None:
     """Goes back to the previous page"""
     webdriver.back()
     
+@tool
+def close_popups() -> str:
+    """
+    Closes any visible modal or pop-up on the page. Use this to dismiss pop-up windows!
+    But this will not work on cookie consent banners.
+    """
+    webdriver.ActionChains(driver).send_keys(Keys.ESCAPE).perform()
