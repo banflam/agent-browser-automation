@@ -53,3 +53,4 @@ chrome_options.add_argument("--window-size=1000,1350")
 chrome_options.add_argument("--disable-pdf-viewer")
 chrome_options.add_argument("--window-position=0,0")
 
+driver = helium.start_chrome(headless=False, options=chrome_options)
